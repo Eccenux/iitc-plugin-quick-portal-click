@@ -14,11 +14,9 @@
 // @match          https://*.ingress.com/mission/*
 // @match          http://*.ingress.com/mission/*
 // @grant          none
+// @updateURL      https://github.com/Eccenux/iitc-plugin-quick-portal-click/raw/master/quick-portal-click.meta.js
+// @downloadURL    https://github.com/Eccenux/iitc-plugin-quick-portal-click/raw/master/quick-portal-click.user.js
 // ==/UserScript==
-
-// ##updateURL      https://github.com/Eccenux/iitc-plugin-quick-portal-click/raw/master/quick-portal-click.meta.js
-// ##downloadURL    https://github.com/Eccenux/iitc-plugin-quick-portal-click/raw/master/quick-portal-click.user.js
-
 
 function wrapper(plugin_info) {
 // ensure plugin framework is there, even if iitc is not yet loaded
