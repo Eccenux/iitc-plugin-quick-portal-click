@@ -2,7 +2,7 @@
 // @id             iitc-plugin-quick-portal-click@3ch01c
 // @name           IITC plugin: quick-portal-click
 // @category       Misc
-// @version        0.0.1
+// @version        0.0.2
 // @namespace      https://github.com/3ch01c/ingress-intel-total-conversion
 // @description    This is an overwrite for default portal-click function which prevents unwanted zoom.
 // @include        https://*.ingress.com/intel*
@@ -26,6 +26,7 @@ if(typeof window.plugin !== 'function') window.plugin = function() {};
 
 // setup plugin
 var setup = function() {
+	var fakeBookmarkIndex = 0;
 	window.selectPortalByLatLng = function(lat, lng) {
 		if(lng === undefined && lat instanceof Array) {
 			lng = lat[1];
@@ -52,9 +53,17 @@ var setup = function() {
 			renderPortalDetails(guid);
 		// add bookmark
 		} else if ('bookmarks' in window.plugin) {
-			console.log("selectPortalByLatLng: showing temporary bookmark");
+			console.log("selectPortalByLatLng: showing temporary bookmark ("+fakeBookmarkIndex+")");
+			// params
 			var latlng = L.latLng(lat, lng);
-			window.plugin.bookmarks.addStar('fakeguid', latlng, 'clicked portal');
+			var guid = 'fakeguid'+fakeBookmarkIndex;
+			// add to layer
+			window.plugin.bookmarks.addStar(guid, latlng, 'clicked portal');
+			// remove click event
+			var star = window.plugin.bookmarks.starLayers[guid];
+			star.off('spiderfiedclick');
+			//
+			fakeBookmarkIndex++;
 		// last resort
 		} else {
 			if (confirm("Portal not found. Zoom to show portal?")) {
