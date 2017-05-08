@@ -9,3 +9,5 @@ The script does 3 things:
 3. Finally if you don't have a bookmark plugin it will __ask__ if you want to zoom in to see the portal details.
 
 Assuming you already have IITC just [install the script](https://github.com/Eccenux/iitc-plugin-quick-portal-click/raw/master/quick-portal-click.user.js).
+
+See also: [my other IITC plugins](https://github.com/search?q=user%3AEccenux+iitc-plugin&type=Repositories).
